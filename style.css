@@ -1,0 +1,11 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+canvas.vignette {
+  box-shadow: inset 0 4px 60px rgba(0, 0, 0, 0.75);
+  box-sizing: border-box;
+}
