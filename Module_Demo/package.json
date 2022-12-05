@@ -1,0 +1,16 @@
+{
+  "name": "module_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx parcel index.html --port 80 --host 0.0.0.0"
+  },
+  "author": "gael",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "parcel": "^2.8.0",
+    "three": "^0.147.0"
+  }
+}
