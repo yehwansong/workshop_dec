@@ -16,8 +16,8 @@ var scene = new THREE.Scene();
 // camera.position.set(0, -400, 400);
 
 
-const camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -100, 100 );
-    camera.position.set(0, 30,-10);
+const camera = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, -500, 500 );
+    camera.position.set(0, 10,10);
         // camera.rotation.x = -45
 
 scene.add( camera );
@@ -78,7 +78,7 @@ const geometry = new THREE.SphereGeometry( 25, 32, 16 );
 const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
 const sphere = new THREE.Mesh( geometry, material );
 sphere.position.y = -50
-scene.add( sphere );
+// scene.add( sphere );
 
 
 
@@ -92,14 +92,36 @@ var geometry_2 = new THREE.BoxGeometry(50, 50, 50);
 var material_2 = new THREE.MeshPhongMaterial({ color: 0x2196f3, map:texture_2, side: THREE.DoubleSide, opacity:0.5 });
 var cube_2     = new THREE.Mesh(geometry_2, material_2);
 cube_2.position.x = -50
-scene.add(cube_2);
+// scene.add(cube_2);
 
+
+var texture = loader.load( 'img/cha-00.png' );
+texture.wrapS = THREE.RepeatWrapping;
+texture.wrapT = THREE.RepeatWrapping;
+texture.repeat.set(10, 10);
+const plane = new THREE.Mesh( new THREE.PlaneGeometry( 500, 500 ), new THREE.MeshBasicMaterial( {map:texture, side: THREE.DoubleSide} ) );
+    plane.rotation.x=degrees_to_radians(90)
+    // plane.position.x = final_length_val/2 - 0.5
+    plane.position.x = 0.5
+    plane.position.y = -1.5
+    // scene.add(plane)
+
+function degrees_to_radians(degrees){
+    var pi = Math.PI;
+    return degrees * (pi/180);
+}   
+
+
+
+//group
+const group = new THREE.Group();
+scene.add( group );
 
 
 
 let fontloader = new THREE.FontLoader();
 fontloader.load("https://s3-us-west-2.amazonaws.com/s.cdpn.io/254249/helvetiker_regular.typeface.json", function (font) {
-    let message = "Cod";
+    let message = "Threejs";
     let geometry_4 = new THREE.TextGeometry(message, {
       font: font,
       size: 30,
@@ -115,9 +137,26 @@ fontloader.load("https://s3-us-west-2.amazonaws.com/s.cdpn.io/254249/helvetiker_
     });
     geometry.center();
     let mesh = new THREE.Mesh(geometry_4, material_4);
-    scene.add(mesh);
 	mesh.position.y = 50
+    // scene.add(mesh);
  });
+
+
+
+
+//-----------------------light-----------------------
+const color = 0xFF0000;
+const pointLight = new THREE.PointLight(color);
+pointLight.position.set(0, 300, 200);
+scene.add(pointLight);
+
+// const color = 0xFF0000;
+// const intensity = 0.5;
+// const light = new THREE.AmbientLight(color, intensity);
+// scene.add(light);
+
+
+
 
 
 
@@ -137,18 +176,6 @@ fontloader.load("https://s3-us-west-2.amazonaws.com/s.cdpn.io/254249/helvetiker_
 
 
 
-
-
-//-----------------------light-----------------------
-// const color = 0xFF0000;
-// const pointLight = new THREE.PointLight(color);
-// pointLight.position.set(0, 300, 200);
-// scene.add(pointLight);
-
-const color = 0xFF0000;
-const intensity = 0.5;
-const light = new THREE.AmbientLight(color, intensity);
-scene.add(light);
 
 
 
