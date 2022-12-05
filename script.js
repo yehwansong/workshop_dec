@@ -24,8 +24,8 @@ scene.add( camera );
 
 
 //-----------------------controls-----------------------
-// let controls = new THREE.OrbitControls(camera);
-// controls.update();
+let controls = new THREE.OrbitControls(camera);
+controls.update();
 
 
 //-----------------------mesh-----------------------
